@@ -559,11 +559,11 @@ async def меню_заявок(ctx):
 async def меню_клана(ctx):
     await ctx.message.delete()
     embed = disnake.Embed(
-        title="🌙 Заявка в EclipseClan",
-        description="Нажмите на кнопку ниже, чтобы подать заявку в клан.",
+        title="🌙 EclipseClan • Набор в клан",
+        description="Хочешь стать частью нашей команды? Нажимай на кнопку ниже и заполняй анкету!\n\n┃ **📌 Критерии для вступления:**\n┃ **Возраст** — 11+\n┃ **Онлайн** — Хорошая активность\n┃ **Микрофон** — Обязательно\n┃ **Навыки** — Строительство + 2+ вида ПвП\n┃ **Адекватность** — Полная\n",
         color=0x7b2fbe
     )
-    embed.set_footer(text="ECL Tiers")
+    embed.set_footer(text="EclipseClan")
     await ctx.send(embed=embed, view=ClanApplicationView())
 
 @bot.command()
