@@ -1,6 +1,8 @@
 import os
 import sqlite3
+import threading
 from datetime import datetime
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 import disnake
 from disnake.ext import commands
@@ -751,9 +753,28 @@ async def on_ready():
     print(f"====================================")
 
 # ==============================================================================
+# Health check server for Railway
+# ==============================================================================
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+    def log_message(self, format, *args):
+        pass
+
+def run_health_server():
+    port = int(os.getenv("PORT", "8080"))
+    server = HTTPServer(("0.0.0.0", port), HealthHandler)
+    server.serve_forever()
+
+# ==============================================================================
 # Run
 # ==============================================================================
 if __name__ == "__main__":
+    thread = threading.Thread(target=run_health_server, daemon=True)
+    thread.start()
+
     if not BOT_TOKEN:
         raise ValueError("DISCORD_TOKEN environment variable not set!")
     bot.run(BOT_TOKEN)
