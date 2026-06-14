@@ -556,6 +556,18 @@ async def меню_заявок(ctx):
 
 @bot.command()
 @commands.has_permissions(administrator=True)
+async def меню_клана(ctx):
+    await ctx.message.delete()
+    embed = disnake.Embed(
+        title="🌙 Заявка в EclipseClan",
+        description="Нажмите на кнопку ниже, чтобы подать заявку в клан.",
+        color=0x7b2fbe
+    )
+    embed.set_footer(text="ECL Tiers")
+    await ctx.send(embed=embed, view=ClanApplicationView())
+
+@bot.command()
+@commands.has_permissions(administrator=True)
 async def меню_высоких_тестов(ctx):
     await ctx.message.delete()
     embed = disnake.Embed(
