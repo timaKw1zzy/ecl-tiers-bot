@@ -1,0 +1,9 @@
+__pycache__/
+*.db
+*.pyc
+.git
+.gitignore
+start.bat
+start.sh
+railway.json
+runtime.txt

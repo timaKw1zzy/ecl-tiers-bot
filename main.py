@@ -762,6 +762,11 @@ async def slash_топ_удалить(
 # ==============================================================================
 @bot.event
 async def on_ready():
+    try:
+        synced = await bot.sync_all_application_commands()
+        print(f"Синхронизировано {len(synced)} slash-команд.")
+    except Exception as e:
+        print(f"Ошибка синхронизации: {e}")
     print(f"====================================")
     print(f"Бот {bot.user} успешно запущен!")
     print(f"Все системы ECL Bot работают стабильно.")
