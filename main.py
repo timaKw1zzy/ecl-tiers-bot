@@ -764,7 +764,6 @@ async def slash_топ_удалить(
 async def on_ready():
     print(f"====================================")
     print(f"Бот {bot.user} успешно запущен!")
-    print(f"Slash-команды: {len(bot.pending_application_commands)} зарегистрировано")
     print(f"Все системы ECL Bot работают стабильно.")
     print(f"====================================")
 
